@@ -1,0 +1,41 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?after">
+</head>
+<body>
+    <div class="container">
+        <!--Header-->
+        <header>
+            <nav>
+                <div>
+                    <ul class="home_menu">
+                        <li><a href="#" class="home">name</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="menus_menu">
+                        <li><a href="#" class="introduce">Introduce</a></li>
+                        <li><a href="#" class="game">Game</a></li>
+                        <li><a href="#" class="eunsung">--</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="introducePage">introduce</div>
+            <div class="gamePage">game</div>
+            <div class="--Page">--</div>
+        </main>
+        <footer id="footer">
+            <div class="copyright">
+                <span class="copy"> &copy 2023</span>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
