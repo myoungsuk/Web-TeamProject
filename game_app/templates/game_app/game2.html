@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JunhoFishing</title>
+        <style>
+            #gameCanvas {
+                border: solid black 1px;
+                background-image: url("https://art.pixilart.com/1e0373e8e198f9e.gif");
+                background-repeat: repeat;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="text-align: center;">
+            <canvas id="gameCanvas" width="800" height="450"></canvas>
+            <p>Moving Bobber: w, a, s, d or &#x2191; &#x2190; &#x2193; &#x2192;</p>
+            <p>StartFishing: space</p>
+            <p>StopFishing: space</p>
+            <p>If the bobber turns yellow, pull up the rod!</p>
+            <br>
+            <p>Made by Jeong Junho, 2020069046, School of Computer Science, Chungbuk National University, Korea</p>
+        </div>
+        <script type="text/javascript" src="{% static 'js/game2.js' %}"></script>
+    </body>
+</html>
