@@ -11,17 +11,32 @@
                 background-image: url("https://art.pixilart.com/1e0373e8e198f9e.gif");
                 background-repeat: repeat;
             }
+            .game-description {
+                text-align: center;
+                width: 60%;
+                background-color: rgba(0, 0, 0, 0.7);
+                padding: 20px;
+                color: white;
+                border-radius: 10px;
+                margin: auto;
+                margin-top: 20px;
+            }
         </style>
     </head>
     <body>
         <div style="text-align: center;">
             <canvas id="gameCanvas" width="800" height="450"></canvas>
-            <p>Moving Bobber: w, a, s, d or &#x2191; &#x2190; &#x2193; &#x2192;</p>
-            <p>StartFishing: space</p>
-            <p>StopFishing: space</p>
-            <p>If the bobber turns yellow, pull up the rod!</p>
-            <br>
-            <p>Made by Jeong Junho, 2020069046, School of Computer Science, Chungbuk National University, Korea</p>
+        </div>
+        <div class="game-description">
+            <h1 style="text-align: center; color: #FFD700;">JunhoFishing 게임 설명서</h1>
+            <p>JunhoFishing은 가상의 낚시 환경에서 물고기를 잡는 게임입니다. 물고기를 잡으려면 먼저 낚싯바늘을 움직이고, 그다음에는 낚시를 시작하여 물고기를 잡습니다.</p>
+            <ul>
+                <li><b>낚싯바늘 이동:</b> 'w', 'a', 's', 'd' 키 또는 방향키(↑, ↓, ←, →)를 사용하여 낚싯바늘을 움직일 수 있습니다.</li>
+                <li><b>낚시 시작:</b> 스페이스바를 눌러 낚시를 시작합니다.</li>
+                <li><b>낚시 중지:</b> 스페이스바를 다시 눌러 낚시를 중지합니다.</li>
+                <li><b>물고기 잡기:</b> 낚싯바늘이 노랗게 변하면, 물고기가 낚싯바늘에 걸린 것입니다. 이때 낚싯대를 들어 올려 물고기를 잡습니다.</li>
+            </ul>
+            <p>즐거운 낚시 시간 되세요!</p>
         </div>
         <script type="text/javascript" src="{% static 'js/game2.js' %}"></script>
     </body>

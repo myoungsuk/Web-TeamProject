@@ -1,0 +1,181 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    body {
+        background-color: black;
+        position: relative; /* body 요소를 상대적인 위치로 설정 */
+    }
+
+    canvas {
+        border: 1px solid black;
+        display: block;
+        margin: 0 auto;
+        background-color: white;
+    }
+
+    #score {
+
+    }
+</style>
+
+<canvas id="canvas"></canvas>
+<img id="frogImage" src="{% static 'images/game5/frogImage.png' %}"
+     style="display: none;" alt="개구리">
+<img id="stoneImage" src="{% static 'images/game5/stoneImage.png' %}"
+     style="display: none;" alt="돌">
+
+<div id="score"></div>
+
+<!-- 게임 설명서 추가 -->
+<div style="color: white; text-align: center; margin-top: 20px;">
+    <h1>게임 설명서</h1>
+    <p>이 게임은 개구리가 돌을 피하는 게임입니다. 개구리는 공중을 점프하여 돌을 피해야 합니다.</p>
+    <p>조작법은 다음과 같습니다:</p>
+    <ul>
+        <li>점프: 스페이스바</li>
+        <li>게임 재시작: R 키</li>
+    </ul>
+    <p>돌이 화면 왼쪽으로 완전히 나가면 점수가 증가합니다. 개구리가 돌에 부딪히면 게임이 끝나고, 'R'키를 눌러 재시작할 수 있습니다.</p>
+    <p>돌의 속도는 랜덤이니 항상 긴장의 끈을 놓치지 마세요!</p>
+</div>
+
+<script>
+    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext('2d');
+    var animation;
+
+    var img1 = document.getElementById('frogImage');
+    var img2 = document.getElementById('stoneImage');
+    canvas.width = 800; /* 캔버스 너비 조정 */
+    canvas.height = 350; /* 캔버스 높이 조정 */
+
+    var frog = {
+        x: 10,
+        y: 250,
+        width: 50,
+        height: 50,
+        draw() {
+            ctx.fillStyle = 'green';
+            ctx.drawImage(img1, this.x, this.y, this.width, this.height);
+        }
+    }
+
+    class Stone {
+    constructor() {
+        this.x = 450 + Math.random() * canvas.width;
+        this.y = 250;
+        this.width = 50;
+        this.height = 50;
+        this.speed = Math.random() * 5 + 1; // 1~6 사이의 랜덤한 속도 설정
+    }
+
+    draw() {
+        this.x -= this.speed; // 속도에 따라 돌의 x좌표 업데이트
+        ctx.fillStyle = 'red';
+        ctx.drawImage(img2, this.x, this.y, this.width, this.height);
+    }
+}
+
+
+    var timer = 0;
+    var stones = [];
+    var score = 0;
+
+    function frameMove() {
+        animation = requestAnimationFrame(frameMove);
+        timer++;
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // 점수 표시
+        ctx.fillStyle = 'black';
+        ctx.font = '20px Arial';
+        ctx.fillText('Score: ' + score, 10, 25);
+
+        // 일정 시간 간격으로 돌 생성
+        if (timer % 150 === 0) {
+            var stone = new Stone();
+            stones.push(stone);
+        }
+        stones.forEach((a, i, o) => {
+            // 화면 왼쪽 밖으로 벗어나면 돌 삭제
+            if (a.x < -a.width) {
+                o.splice(i, 1);
+                score++; // 돌이 지나갈 때마다 스코어 증가
+            }
+            a.x -= 3;
+            a.draw();
+
+            collision(frog, a);
+        });
+
+        if (jumping) {
+            frog.y -= 2;
+            jumpingTime++;
+        }
+
+        if (!jumping) {
+            if (frog.y < 250) {
+                frog.y += 2;
+            }
+        }
+
+        if (jumpingTime > 70) {
+            jumping = false;
+            jumpingTime = 0;
+        }
+
+        frog.draw();
+
+        updateScore(); // 스코어 업데이트
+    }
+
+    function updateScore() {
+        var scoreElement = document.getElementById('score');
+        scoreElement.textContent = 'Score: ' + score;
+    }
+
+    frameMove();
+
+    var jumping = false;
+    var jumpingTime = 0;
+
+    document.addEventListener('keydown', function (e) {
+        if (e.code === 'Space') {
+            jumping = true;
+        }
+        if (e.code === 'KeyR' && !animation) {
+            restartGame();
+        }
+    })
+
+    function collision(frog, stone) {
+        var xDifference = stone.x - (frog.x + frog.width);
+        var yDifference = stone.y - (frog.y + frog.height);
+
+        if (xDifference < -20 && yDifference < -20) {
+            cancelAnimationFrame(animation);
+            animation = null;
+        }
+    }
+
+    function restartGame() {
+        frog.x = 10;
+        frog.y = 250;
+        stones = [];
+        jumping = false;
+        jumpingTime = 0;
+        timer = 0;
+        score = 0;
+        animation = requestAnimationFrame(frameMove);
+    }
+</script>
+</body>
+</html>
