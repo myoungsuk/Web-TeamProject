@@ -1,0 +1,38 @@
+/* header */
+header {
+    background-color: #f6f5ef;
+}
+
+header nav {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home_menu li {
+    list-style: none;
+}
+
+.menus_menu, .home_menu {
+    display: flex;
+}
+
+.menus_menu li {
+    margin: 0 8px;
+    list-style: none;
+}
+
+.menus_menu li a, .home {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #3f4141;
+    font-size: 13px;
+    padding: 20px 20px 24px;
+}
+
+.menus_menu li a:hover, .home:hover {
+    text-decoration: underline;
+    color: #639202;
+    background-color: #2c2a29;
+}

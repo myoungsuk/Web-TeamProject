@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+}
+
+.banner {
+    background: red;
+    width: 100vw;
+    height: 70vh;
+}
+
+.banner-text-1 {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+}
+
+.banner-text-1 > p {
+    color: white;
+    margin: 0;
+}
