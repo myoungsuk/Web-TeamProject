@@ -1,0 +1,68 @@
+.container {
+    background-color: #1e3932;
+    height: 800px;
+}
+
+.form {
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_div {
+    width: 573px;
+    height: 600px;
+    background-color: white;
+    display: inline-block;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.form_div>span {
+    font-size: 18px;
+    color: #3f4141;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.createAccount-form {
+    margin-top: 20px;
+    margin-left: 25px;
+    text-align: left;
+}
+
+.createAccount-form span {
+    display: inline-block;
+    width: 70px;
+    font-size: 12px;
+}
+
+.same {
+    width: 450px;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px solid #3f4141;
+    margin-bottom: 10px;
+}
+
+.create_account {
+    width: 530px;
+    height: 60px;
+    border-radius: 6px;
+    border: 1px solid #3f4141;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #1e3932;
+    color: white;
+    font-size: 20px;
+}
+
+#reset {
+    width: 60px;
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid;
+    background-color: black;
+    color: white;
+}

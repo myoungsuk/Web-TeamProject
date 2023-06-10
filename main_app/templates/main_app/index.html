@@ -1,41 +1,18 @@
-<!doctype html>
+{% extends 'main_app/base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?after">
-</head>
-<body>
-    <div class="container">
-        <!--Header-->
-        <header>
-            <nav>
-                <div>
-                    <ul class="home_menu">
-                        <li><a href="#" class="home">name</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="menus_menu">
-                        <li><a href="#" class="introduce">Introduce</a></li>
-                        <li><a href="#" class="game">Game</a></li>
-                        <li><a href="#" class="eunsung">--</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <main>
-            <div class="introducePage">introduce</div>
-            <div class="gamePage">game</div>
-            <div class="--Page">--</div>
-        </main>
-        <footer id="footer">
-            <div class="copyright">
-                <span class="copy"> &copy 2023</span>
+{% block contents %}
+        <main id="main">
+            <div class="mainImg">
+                <img src="{%static '/img/fondue.jpg' %}" alt="fondu" />
             </div>
-        </footer>
-    </div>
-
-</body>
-</html>
+            <div class="introducePage" style="background-image: url('{% static 'img/introduce.jpg'%}')">
+                <a href="#"  class="detail_introduce">팀원 소개 페이지 바로가기</a>
+            </div>
+            <div class="gamePage" style="background-image: url('{% static '/img/game.jpg' %}')">
+                <a href='{% url "game_app:index" %}' class="detail_game">게임 페이지 바로가기</a>
+            </div>
+            <div class="photoPage" style="background-image: url('{% static '/img/photo.jpg' %}')">
+                <a href="#" class="detail_photo">사진모음 페이지 바로가기</a>
+            </div>
+        </main>
+{% endblock %}

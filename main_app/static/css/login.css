@@ -1,0 +1,82 @@
+.container {
+    background-color: #1e3932;
+    height: 700px;
+}
+
+.form {
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_div {
+    width: 573px;
+    height: 500px;
+    background-color: white;
+    display: inline-block;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.form_div span {
+    font-size: 18px;
+    color: #3f4141;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    padding-top: 20px;
+}
+
+.login_id, .login_pw {
+    width: 500px;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px solid #3f4141;
+    margin-bottom: 10px;
+}
+
+.login_submit {
+    width: 505px;
+    height: 60px;
+    border-radius: 6px;
+    border: 1px solid #3f4141;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #1e3932;
+    color: white;
+    font-size: 20px;
+}
+
+.login_submit:hover {
+    text-decoration: underline;
+}
+
+.login-form span {
+    margin-top: 10px;
+    width: 500px;
+    font-size: 13px;
+    color: #1e3932;
+}
+
+.createAccount_link {
+    text-align: right;
+    margin-right: 35px;
+}
+
+.createAccount_link li {
+    list-style: none;
+}
+
+.createAccount_link li a {
+    text-decoration: none;
+    color: #3f4141;
+    font-size: 16px;
+}
+
+.createAccount_link li a:hover {
+    text-decoration: underline;
+    color: #639202;
+}
