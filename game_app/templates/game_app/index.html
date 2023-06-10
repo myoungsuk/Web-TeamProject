@@ -7,20 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>엠시스 홈페이지</title>
-    <link rel="shortcut icon"
-          href="https://image.istarbucks.co.kr/common/img/common/favicon.ico?v=200828"
-          type="image/ico"/>
-    <link rel="stylesheet" href="../../static/css/gift.css">
-    <script defer src="../../static/js/game1.js"></script>
+    <link rel="stylesheet" href="../../static/css/game.css">
+
 
 </head>
 <body>
 <!-- Header -->
 <header>
     <nav>
-        <a href="../../main_app/templates/main_app/index.html">
+        <a href="../../main_app/templates/main_app/index.html">{# 메인페이지로 이동 #}
             <img class="logo"
                  src="https://www.starbucks.co.kr/common/img/common/logo.png"
+                    {# 로고 변경 #}
                  alt="logo image">
         </a>
         <div class="menus">
@@ -34,7 +32,13 @@
                 </button>
             </ul>
             <ul class="menus__main-manu">
-                <li><a href="../drink/drink.html" class="drink">drink</a></li>
+                {% if not user.is_authenticated %}
+                    <li><a href="../game_app/login" class="drink">login</a></li>
+                {% else %}
+                    <li><a href="../game_app/logout" class="drink">logout</a>
+                    </li>
+                {% endif %}
+                {# 개별 페이지 이동 구현 #}
                 <li><a href="../food/food.html" class="food">food</a></li>
                 <li><a href="../gift/gift.html">gift</a></li>
                 <li><a href="../card/card.html">card</a></li>
@@ -57,8 +61,8 @@
 
 <!-- Item section -->
 <section class="items">
-    <div class="items__category" data-type="mug">
-        <h2 class="items__category-name">게임 종류</h2>
+    <div class="items__category" data-type="game">
+        <h2 class="items__category-name">미니 게임</h2>
 
         <ul class="item">
 
@@ -67,55 +71,51 @@
                     <img class="item__info-img"
                          src="{% static 'images/game1/Thumbnail1.png' %}"
                          alt="슈팅 게임">
-                    <span class="item__info-name"> 1.shooting game</span>
+                    <p></p>
+                    <span class="item__info-name"> 슈팅 게임 </span>
                 </a>
             </li>
 
-
-             <li class="item__info">
+            <li class="item__info">
                 <a href={% url 'game_app:game2' %}>
                     <img class="item__info-img"
                          src="{% static 'images/game2/Thumbnail2.png' %}"
                          alt="낚시 게임">
-                    <span class="item__info-name"> 2.낚시 게임 </span>
+                    <br>
+                    <span class="item__info-name"> 낚시 게임 </span>
                 </a>
             </li>
 
-             <li class="item__info">
+            <li class="item__info">
                 <a href={% url 'game_app:game3' %}>
                     <img class="item__info-img"
-                         src="{% static 'images/game1/Thumbnail1.png' %}"
+                         src="{% static 'images/game3/Thumbnail3.png' %}"
                          alt="게임 3번">
-                    <span class="item__info-name"> 3.번게임 </span>
+                    <br>
+                    <span class="item__info-name"> 오목 게임 </span>
                 </a>
             </li>
 
             <li class="item__info">
                 <a href={% url 'game_app:game4' %}>
                     <img class="item__info-img"
-                         src="{% static 'images/game1/Thumbnail1.png' %}"
+                         src="{% static 'images/game4/Thumbnail4.png' %}"
                          alt="게임 4번">
-                    <span class="item__info-name"> 4.번게임 </span>
+                    <br>
+                    <span class="item__info-name"> 블록 피하기 게임 </span>
                 </a>
             </li>
 
             <li class="item__info">
                 <a href={% url 'game_app:game5' %}>
                     <img class="item__info-img"
-                         src="{% static 'images/game1/Thumbnail1.png' %}"
+                         src="{% static 'images/game5/Thumbnail5.png' %}"
                          alt="게임 5번">
-                    <span class="item__info-name"> 5.번게임 </span>
+                    <br>
+                    <span class="item__info-name"> 개구리 게임 </span>
                 </a>
             </li>
 
-            <li class="item__info">
-                <a href={% url 'game_app:game6' %}>
-                    <img class="item__info-img"
-                         src="{% static 'images/game1/Thumbnail1.png' %}"
-                         alt="게임 6번">
-                    <span class="item__info-name"> 6.번게임 </span>
-                </a>
-            </li>
 
         </ul>
     </div>

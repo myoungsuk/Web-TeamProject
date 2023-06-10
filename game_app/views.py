@@ -24,3 +24,4 @@ def game5(request):
     return render(request, 'game_app/game5.html')
 def game6(request):
     return render(request, 'game_app/game6.html')
+

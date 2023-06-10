@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myGame</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        button {
+            /* display: flex; */
+            width: 80px;
+            height: 40px;
+            margin: 30px 30px;
+        }
+
+        #gameInstructions {
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="padding-left: 38%">
+        <button id="startBtn" onclick="startGame()">Start</button>
+        <button id="restartBtn" onclick="restartGame()">Restart</button>
+    </div>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <div id="gameInstructions">
+        <h2>게임 설명</h2>
+        <p>이 게임은 장애물을 피하는 간단한 웹 기반 게임입니다.</p>
+        <ul>
+            <li><b>스타트 버튼:</b> 게임을 시작합니다. 게임 시작 시, 녹색 블록(플레이어)이 생성되고 빨간색 블록(장애물)이 오른쪽에서 왼쪽으로 이동하기 시작합니다.</li>
+            <li><b>재시작 버튼:</b> 게임을 초기 상태로 재시작합니다. 플레이어 위치, 점수 등 모든 게임 요소가 초기화 됩니다.</li>
+            <li><b>스페이스바:</b> 스페이스바를 눌러 플레이어를 점프시킬 수 있습니다. 장애물을 피하려면 적절한 타이밍에 스페이스바를 눌러 점프하세요.</li>
+            <li><b>게임 오버:</b> 플레이어가 장애물에 충돌하면 게임이 종료되며, 'Game Over!' 알림이 표시됩니다.</li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="{% static 'js/game4.js' %}"></script>
+</body>
+
+</html>

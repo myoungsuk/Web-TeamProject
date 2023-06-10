@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #omok {
+        border: 1px solid black;
+        align-self : center;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+
+
+        margin: 0;
+        background-color: #fafafa;
+    }
+
+
+
+    #instructions {
+        font-family: Arial, sans-serif;
+        margin:  40px 20px 20px 20px;
+        padding: 30px;
+
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #958d8d;
+    }
+
+    #instructions h2 {
+        color: #181616;
+        margin-top : 30px;
+        margin-bottom: 10px;
+    }
+
+    #instructions h3 {
+        color: #3d3838;
+        margin-bottom: 10px;
+    }
+
+    #instructions p {
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    #instructions ul {
+        margin-left: 20px;
+    }
+
+    #instructions li {
+        margin-bottom: 5px;
+    }
+</style>
+
+<body>
+
+
+<div id="instructions">
+    <p></p>
+    <p></p>
+    <p></p>
+    <h2>오목 게임 설명서</h2>
+    <p>오목 게임은 두 명의 플레이어가 차례로 돌을 놓아서 가장 먼저 돌 다섯 개를 연속으로 놓는 사람이 이기는 게임입니다.</p>
+
+    <h3>게임 규칙</h3>
+    <ul>
+
+        <li>돌은 바둑판의 교차점 위에 놓아야 합니다.</li>
+        <li>가장 먼저 자신의 돌 다섯 개를 가로, 세로, 대각선 어느 방향으로든 연속으로 놓는 사람이 승리합니다.</li>
+        <li>단, 돌 여섯 개 이상을 연속으로 놓은 경우는 승리로 인정되지 않습니다.</li>
+        <li>흑돌은 렌주율을 따라 3 3, 4 4 가 인정되지 않습니다</li>
+    </ul>
+
+    <h3>게임 조작 방법</h3>
+    <ul>
+        <li>마우스를 사용해 돌을 놓을 위치를 선택하세요.</li>
+    </ul>
+</div>
+
+
+<canvas id="omok" width="840" height="840"></canvas>
+<script type="" src="{% static 'js/game3.js' %}"></script>
+</body>
+</html>

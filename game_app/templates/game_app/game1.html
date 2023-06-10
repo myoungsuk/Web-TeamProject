@@ -20,328 +20,459 @@
             height: 1px; /* 높이를 1px로 설정 */
             margin: -1px; /* 마진을 -1px로 설정 */
         }
+        .content-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 100vh;
+        }
     </style>
+
+    <style>
+        .content-container {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+
+    </style>
+
+    <style>
+        body {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #000;
+        }
+
+        #scoreboard {
+
+            top: 20px;
+            right: 20px;
+            width: 200px;
+            background: #fff;
+            padding:10px;
+
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            height: 500px;
+            overflow-y: scroll;
+        }
+
+        #scoreboard h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        #score-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+
+        #score-list li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            text-align: center;
+            color: #333;
+        }
+
+    </style>
+
 </head>
 <body>
+
+
 <h1 class="a11y-hidden">shooting-game</h1>
 <!-- 제목을 보이지 않도록 하는 스타일을 적용한 숨김 텍스트 -->
 
+<div class="game-container"
+     style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+
+</div>
+
+<div class="content-container">
+    <div id="instructions">
+        <!-- 게임 설명서 내용 -->
+        <div class="game-description"
+             style="text-align:center; width: 50%; background-color: rgba(0, 0, 0, 0.7); padding: 20px; color: white; border-radius: 10px;">
+            <h1 style="text-align: center; color: #FFD700;">우주 전투 게임 설명서</h1>
+            <p>이 게임은 우주선을 조종하여 날아오는 운석을 피하거나 부시는 게임입니다. 우주선은 총알을 발사하여 악당 우주선을 처치할 수
+                있습니다.</p>
+            <ul>
+                <li><b>이동:</b> 화살표 키를 사용하여 우주선을 이동시킬 수 있습니다. 좌/우 화살표 키로 좌우로, 상/하
+                    화살표
+                    키로 위아래로 이동합니다.
+                </li>
+                <li><b>발사:</b> 스페이스바를 눌러 총알을 발사합니다.</li>
+                <li><b>점수:</b> 운석을 처치하면 점수가 오릅니다. 점수가 높아질수록 게임의 난이도가 상승합니다.
+                </li>
+                <li><b>게임 오버:</b>  운석과 충돌하면 게임이 종료됩니다. 게임 오버 화면에서 재시작 버튼을
+                    클릭하여
+                    게임을 재시작할 수 있습니다.
+                </li>
+            </ul>
+            <p>이제, 당신의 우주선을 타고 우주 전투에 참여해 보세요!</p>
+        </div>
+    </div>
+
+    <div id="scoreboard">
+        <h2>Score List</h2>
+        <ul id="score-list">
+
+        </ul>
+    </div>
+</div>
+
+
 <script>
-// 게임 이미지 로드 함수
-// 게임에 사용되는 이미지들을 불러옵니다.
-// 캔버스와 컨텍스트를 생성
-// 캔버스는 HTML의 그리기 영역이며, ctx는 그림을 그리는데 사용되는 도구입니다.
-let canvas;
-let ctx;
-canvas = document.createElement('canvas');
-ctx = canvas.getContext("2d");
-canvas.width = 400; // 캔버스의 가로 길이를 설정
-canvas.height = 700; //캔버스의 세로 길이를 설정
-document.body.appendChild(canvas); // 생성한 캔버스를 HTML 문서에 추가
 
-reloadImage = new Image();
-reloadImage.src = "{% static 'images/game1/restartButton.png' %}";
-reloadImageSize = 50;
 
-// 게임 이미지 변수 선언
-let enemyImages = []; // 적 이미지를 저장할 배열
-let backgroundImage1, backgroundImage2, spaceshipImage, bulletImage,  gameOverImage; // 배경, 우주선, 총알, 게임 오버 이미지
-let gameOver = false; // 게임이 끝나면 true가 됨
-let score = 0; // 플레이어의 점수
-let bg1Y, bg2Y; // 배경 이미지의 y좌표
-let interval; // 게임의 주기를 제어하는 변수
+    // 게임 이미지 로드 함수
+    // 게임에 사용되는 이미지들을 불러옵니다.
+    // 캔버스와 컨텍스트를 생성
+    // 캔버스는 HTML의 그리기 영역이며, ctx는 그림을 그리는데 사용되는 도구입니다.
+    let canvas;
+    let ctx;
+    canvas = document.createElement('canvas');
+    ctx = canvas.getContext("2d");
+    canvas.width = 400; // 캔버스의 가로 길이를 설정
+    canvas.height = 700; //캔버스의 세로 길이를 설정
+    document.body.appendChild(canvas); // 생성한 캔버스를 HTML 문서에 추가
 
-//게임의 난이도 설정
-let difficulty = 1;
+    reloadImage = new Image();
+    reloadImage.src = "{% static 'images/game1/restartButton.png' %}";
+    reloadImageSize = 50;
 
-// 우주선의 초기 위치
-let spaceshipX = canvas.width / 1.5 - 90;
-let spaceshipY = canvas.height /1.5 - 30;
+    // 게임 이미지 변수 선언
+    let enemyImages = []; // 적 이미지를 저장할 배열
+    let backgroundImage1, backgroundImage2, spaceshipImage, bulletImage,
+        gameOverImage; // 배경, 우주선, 총알, 게임 오버 이미지
+    let gameOver = false; // 게임이 끝나면 true가 됨
+    let score = 0; // 플레이어의 점수
+    let bg1Y, bg2Y; // 배경 이미지의 y좌표
+    let interval; // 게임의 주기를 제어하는 변수
 
-// 게임의 총알들을 저장할 배열
-let bulletList = [];
+    //게임의 난이도 설정
+    let difficulty = 1;
 
-// 총알을 정의하는 클래스
-// 총알의 위치, 상태, 충돌 여부를 처리하는 메서드를 포함합니다.
-function Bullet() {
-  this.x = 0;
-  this.y = 0;
-  // 총알의 초기 위치와 상태 설정
-  this.init = function () {
-    this.x = spaceshipX + 18;
-    this.y = spaceshipY;
-    this.alive = true; // 총알이 살아 있으면 true, 아니면 false
-    bulletList.push(this); // 총알을 총알 배열에 추가
-  }
-  // 총알의 위치를 업데이트하는 함수
-  this.update = function () {
-    this.y -= 7;
-  };
+    // 우주선의 초기 위치
+    let spaceshipX = canvas.width / 1.5 - 90;
+    let spaceshipY = canvas.height / 1.5 - 30;
 
-  // 총알이 적에 맞았는지 확인하는 함수
-  this.checkHit = function () {
-    for (let i = 0; i < enemyList.length; i++) {
-      // 총알이 적에 맞았으면 총알과 적을 제거하고 점수를 올림
-      if (this.y <= enemyList[i].y && this.x >= enemyList[i].x && this.x <= enemyList[i].x + 48) {
-        score++;
-        this.alive = false;
-        enemyList.splice(i, 1);
-      }
+    // 게임의 총알들을 저장할 배열
+    let bulletList = [];
+
+    // 총알을 정의하는 클래스
+    // 총알의 위치, 상태, 충돌 여부를 처리하는 메서드를 포함합니다.
+    function Bullet() {
+        this.x = 0;
+        this.y = 0;
+        // 총알의 초기 위치와 상태 설정
+        this.init = function () {
+            this.x = spaceshipX + 18;
+            this.y = spaceshipY;
+            this.alive = true; // 총알이 살아 있으면 true, 아니면 false
+            bulletList.push(this); // 총알을 총알 배열에 추가
+        }
+        // 총알의 위치를 업데이트하는 함수
+        this.update = function () {
+            this.y -= 7;
+        };
+
+        // 총알이 적에 맞았는지 확인하는 함수
+        this.checkHit = function () {
+            for (let i = 0; i < enemyList.length; i++) {
+                // 총알이 적에 맞았으면 총알과 적을 제거하고 점수를 올림
+                if (this.y <= enemyList[i].y && this.x >= enemyList[i].x && this.x <= enemyList[i].x + 48) {
+                    score++;
+                    this.alive = false;
+                    enemyList.splice(i, 1);
+                }
+            }
+        }
     }
-  }
-}
 
-// 게임의 적들을 저장할 배열
-let enemyList = [];
+    // 점수를 저장하는 배열
+let scores = [];
 
-// 무작위 값 생성 함수
-function generateRandomValue(min, max) {
-  let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
-  return randomNum;
-}
+function updateScoreboard(score) {
+    const scoreList = document.getElementById('score-list');
 
-// 적을 정의하는 클래스
-// 적의 위치, 상태, 충돌 여부를 처리하는 메서드를 포함합니다.
-function Enemy() {
-  this.x = 0;
-  this.y = 0;
+    // 새로운 점수를 추가합니다.
+    scores.push(score);
 
-  // 적의 초기 위치 설정
-  this.init = function () {
-    this.y = 0;
-    this.hitCount = 0;
+    // 점수를 내림차순으로 정렬합니다.
+    scores.sort((a, b) => b - a);
 
-    // 적 이미지를 랜덤하게 선택
-    this.image = enemyImages[Math.floor(Math.random() * enemyImages.length)];
-
-    this.x = generateRandomValue(0, canvas.width - this.image.width); // 수정된 부분
-    enemyList.push(this); // 적을 적 배열에 추가
-
-
-    // 적 이미지를 랜덤하게 선택
-    this.image = enemyImages[Math.floor(Math.random() * enemyImages.length)];
-
-  }
-  // 적의 위치를 업데이트하는 함수
-  this.update = function () {
-    this.y += 2 + difficulty/8; // 적의 이동 속도
-    this.hitCount = 0; // 적이 맞은 횟수
-    // 우주선과 적군의 중심점 좌표 계산
-    let spaceshipCenterX = spaceshipX + spaceshipImage.width / 2;
-    let spaceshipCenterY = spaceshipY + spaceshipImage.height / 2;
-    let enemyCenterX = this.x + this.image.width / 2; // 수정된 부분
-    let enemyCenterY = this.y + this.image.height / 2; // 수정된 부분
-
-    // 두 중심점 사이의 거리 계산
-    let dx = spaceshipCenterX - enemyCenterX;
-    let dy = spaceshipCenterY - enemyCenterY;
-    let distance = Math.sqrt(dx * dx + dy * dy);
-
-    // 우주선과 적군의 반지름 합
-    let radiusSum = spaceshipImage.width / 2 + this.image.width / 2; // 수정된 부분
-
-    // 두 중심점 사이의 거리가 우주선과 적군의 반지름 합보다 작거나 같으면 충돌
-    if (distance <= radiusSum/ 2.5) {
-      gameOver = true;
+    // 기존에 있던 점수 목록을 지웁니다.
+    while (scoreList.firstChild) {
+        scoreList.removeChild(scoreList.firstChild);
     }
-  }
 
+    // 정렬된 점수를 기반으로 새로운 목록을 만듭니다.
+    scores.slice(0, 10).forEach(function(score) {
+        const newScoreItem = document.createElement('li');
+        newScoreItem.textContent = score;
+        scoreList.appendChild(newScoreItem);
+    });
 }
 
 
+    // 게임의 적들을 저장할 배열
+    let enemyList = [];
 
-
-// 게임 이미지 로드 함수
-// 게임에 사용되는 이미지들을 불러옵니다.
-function loadImage() {
-  backgroundImage1 = new Image();
-  backgroundImage1.src = "{% static 'images/game1/background.png' %}";
-  backgroundImage2 = new Image();
-  backgroundImage1.src = "{% static 'images/game1/background.png' %}";
-
-  bg1Y = 0;
-  bg2Y = -canvas.height;
-
-  spaceshipImage = new Image();
-  spaceshipImage.src = "{% static 'images/game1/ship2-small.png' %}";
-  bulletImage = new Image();
-  bulletImage.src = "{% static 'images/game1/red_bullet_fix.png' %}";
-  for(let i = 1; i < 4; i++){
-    let img = new Image();
-    img.src = `{% static 'images/game1/enemy' %}${i}.png`;
-    enemyImages.push(img);
-  }
-  gameOverImage = new Image();
-  gameOverImage.src = "{% static 'images/game1/gameover.png' %}";
-}
-
-// 키보드 입력을 처리하는 리스너 설정
-// 사용자의 키보드 입력을 받아 처리합니다.
-let keysDown = {};
-
-// 적 생성 함수
-// 일정 시간 간격으로 새로운 적을 생성하고 적 배열에 추가합니다.
-function createEnemy() {
-  interval = setInterval(() => {
-    let e = new Enemy();
-    e.init();
-  }, 500 - (difficulty * 200)); // 1초에 한 번씩 적 생성
-}
-
-function setupKeyboardListener() {
-  document.addEventListener("keydown", function (event) {
-    keysDown[event.keyCode] = true; // 키가 눌러지면 true
-  });
-  document.addEventListener("keyup", function (event) {
-    delete keysDown[event.keyCode]; // 키가 떼어지면 삭제
-    if (event.keyCode === 32) { // 스페이스바를 누르면 총알 생성
-      createBullet();
+    // 무작위 값 생성 함수
+    function generateRandomValue(min, max) {
+        let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        return randomNum;
     }
-  });
-  canvas.addEventListener("click", function(event) {
-    let rect = canvas.getBoundingClientRect();
-    let x = event.clientX - rect.left;
-    let y = event.clientY - rect.top;
 
-    // "재시작" 버튼 영역을 클릭했는지 확인
-    if(gameOver &&
-      x >= canvas.width / 2 - 50 &&
-      x <= canvas.width / 2 + 50 &&
-      y >= canvas.height/1.5 &&
-      y <= canvas.height/1.5 + 100) {
+    // 적을 정의하는 클래스
+    // 적의 위치, 상태, 충돌 여부를 처리하는 메서드를 포함합니다.
+    function Enemy() {
+        this.x = 0;
+        this.y = 0;
 
-      // 게임 상태를 초기화
-      gameOver = false;
-      score = 0;
-      difficulty = 1;
-      spaceshipX = canvas.width/2-30;
-      spaceshipY = canvas.height - 60;
-      bulletList = [];
-      enemyList = [];
+        // 적의 초기 위치 설정
+        this.init = function () {
+            this.y = 0;
+            this.hitCount = 0;
 
-      bg1Y = 0;
-      bg2Y = -canvas.height;
+            // 적 이미지를 랜덤하게 선택
+            this.image = enemyImages[Math.floor(Math.random() * enemyImages.length)];
 
-      // let interval = setInterval(() => {
-      //   let e = new Enemy();
-      //   e.init();
-      // }, 500 - (difficulty * 200)); // 1초에 한 번씩 적 생성
-      if (interval) {
-        clearInterval(interval);
-      }
+            this.x = generateRandomValue(0, canvas.width - this.image.width); // 수정된 부분
+            enemyList.push(this); // 적을 적 배열에 추가
 
-      createEnemy();
-      main();
+
+            // 적 이미지를 랜덤하게 선택
+            this.image = enemyImages[Math.floor(Math.random() * enemyImages.length)];
+
+        }
+        // 적의 위치를 업데이트하는 함수
+        this.update = function () {
+            this.y += 2 + difficulty / 8; // 적의 이동 속도
+            this.hitCount = 0; // 적이 맞은 횟수
+            // 우주선과 적군의 중심점 좌표 계산
+            let spaceshipCenterX = spaceshipX + spaceshipImage.width / 2;
+            let spaceshipCenterY = spaceshipY + spaceshipImage.height / 2;
+            let enemyCenterX = this.x + this.image.width / 2; // 수정된 부분
+            let enemyCenterY = this.y + this.image.height / 2; // 수정된 부분
+
+            // 두 중심점 사이의 거리 계산
+            let dx = spaceshipCenterX - enemyCenterX;
+            let dy = spaceshipCenterY - enemyCenterY;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+
+            // 우주선과 적군의 반지름 합
+            let radiusSum = spaceshipImage.width / 2 + this.image.width / 2; // 수정된 부분
+
+            // 두 중심점 사이의 거리가 우주선과 적군의 반지름 합보다 작거나 같으면 충돌
+            if (distance <= radiusSum / 2.5) {
+                gameOver = true;
+            }
+        }
 
     }
-  });
-}
 
-// 게임 상태 업데이트 함수
-// 게임의 상태(플레이어, 적, 총알의 위치 등)를 업데이트합니다.
-function update() {
-  if (39 in keysDown) {
-    if (spaceshipX >= 340) return;
-    spaceshipX += 3.5; // 우측 화살표를 누르면 우측으로 이동
-  }
-  if (37 in keysDown) {
-    if (spaceshipX <= 0) return;
-    spaceshipX -= 3.5; // 좌측 화살표를 누르면 좌측으로 이동
-  }
-  if (38 in keysDown){
-    if (spaceshipY <= 0) return;
-    spaceshipY -= 3.5; //up
-  }
-  if (40 in keysDown){
-    if (spaceshipY >= canvas.height - 60) return;
-    spaceshipY += 3.5; //down
-  }
 
-  bg1Y += 2; // 배경 이미지 속도 조절
-  bg2Y += 2;
+    // 게임 이미지 로드 함수
+    // 게임에 사용되는 이미지들을 불러옵니다.
+    function loadImage() {
+        backgroundImage1 = new Image();
+        backgroundImage1.src = "{% static 'images/game1/background.png' %}";
+        backgroundImage2 = new Image();
+        backgroundImage2.src = "{% static 'images/game1/background.png' %}";
 
-  if (bg1Y >= canvas.height) bg1Y = -canvas.height;
-  if (bg2Y >= canvas.height) bg2Y = -canvas.height;
+        bg1Y = 0;
+        bg2Y = -canvas.height;
 
-  // 총알의 위치 업데이트
-  for (let i = 0; i < bulletList.length; i++) {
-    if (bulletList[i].alive) { // 총알이 살아 있으면
-      bulletList[i].update();
-      bulletList[i].checkHit(); // 적에 맞았는지 확인
+        spaceshipImage = new Image();
+        spaceshipImage.src = "{% static 'images/game1/ship2-small.png' %}";
+        bulletImage = new Image();
+        bulletImage.src = "{% static 'images/game1/red_bullet_fix.png' %}";
+        for (let i = 1; i < 4; i++) {
+            let img = new Image();
+            img.src = `{% static 'images/game1/enemy' %}${i}.png`;
+            enemyImages.push(img);
+        }
+        gameOverImage = new Image();
+        gameOverImage.src = "{% static 'images/game1/gameover.png' %}";
     }
-  }
 
-  // 적의 위치 업데이트
-  for (let i = 0; i < enemyList.length; i++) {
-    enemyList[i].update();
-  }
+    // 키보드 입력을 처리하는 리스너 설정
+    // 사용자의 키보드 입력을 받아 처리합니다.
+    let keysDown = {};
 
-  //점수별 난이도 상승
-  if(score >= 30 && score % 30 === 0){
-    difficulty++;
-  }
-}
-
-// 총알 생성 함수
-// 새로운 총알을 생성하고 총알 배열에 추가합니다.
-function createBullet() {
-  let b = new Bullet();
-  b.init();
-}
-
-
-// 게임 화면 렌더링 함수
-// 게임의 상태를 캔버스에 그려주는 함수입니다.
-function render() {
-  ctx.drawImage(backgroundImage1, 0, 0, canvas.width, canvas.height) // 배경 이미지 그리기
-
-  ctx.drawImage(backgroundImage1, 0, bg1Y, canvas.width, canvas.height);
-  ctx.drawImage(backgroundImage2, 0, bg2Y, canvas.width, canvas.height);
-
-  ctx.drawImage(spaceshipImage, spaceshipX, spaceshipY); // 우주선 이미지 그리기
-  ctx.fillText(`Score:${score}`, 20, 20); // 점수 표시
-  ctx.fillStyle = "white";
-  ctx.font = "20px Arial";
-
-
-
-  // 살아 있는 총알들 그리기
-  for (let i = 0; i < bulletList.length; i++) {
-    if (bulletList[i].alive) {
-      ctx.drawImage(bulletImage, bulletList[i].x, bulletList[i].y);
+    // 적 생성 함수
+    // 일정 시간 간격으로 새로운 적을 생성하고 적 배열에 추가합니다.
+    function createEnemy() {
+        interval = setInterval(() => {
+            let e = new Enemy();
+            e.init();
+        }, 500 - (difficulty * 200)); // 1초에 한 번씩 적 생성
     }
-  }
 
-  // 적 그리기
-  for (let i = 0; i < enemyList.length; i++) {
-    // ctx.drawImage(enemyImage, enemyList[i].x, enemyList[i].y);
-    // 각 적의 고유한 이미지를 사용하여 그림
-    ctx.drawImage(enemyList[i].image, enemyList[i].x, enemyList[i].y);
-  }
-}
+    function setupKeyboardListener() {
+        document.addEventListener("keydown", function (event) {
+            keysDown[event.keyCode] = true; // 키가 눌러지면 true
+        });
+        document.addEventListener("keyup", function (event) {
+            delete keysDown[event.keyCode]; // 키가 떼어지면 삭제
+            if (event.keyCode === 32) { // 스페이스바를 누르면 총알 생성
+                createBullet();
+            }
+        });
+        canvas.addEventListener("click", function (event) {
+            let rect = canvas.getBoundingClientRect();
+            let x = event.clientX - rect.left;
+            let y = event.clientY - rect.top;
 
-// 메인 게임 루프
-function main() {
-  if (!gameOver) { // 게임 오버가 아니면 업데이트와 렌더
+            // "재시작" 버튼 영역을 클릭했는지 확인
+            if (gameOver &&
+                x >= canvas.width / 2 - 50 &&
+                x <= canvas.width / 2 + 50 &&
+                y >= canvas.height / 1.5 &&
+                y <= canvas.height / 1.5 + 100) {
 
-    update(); // 게임 상태 업데이트
-    render(); // 화면 렌더링
-    requestAnimationFrame(main); // 다음 프레임을 요청
+                // 게임 상태를 초기화
+                gameOver = false;
+                score = 0;
+                difficulty = 1;
+                spaceshipX = canvas.width / 2 - 30;
+                spaceshipY = canvas.height - 60;
+                bulletList = [];
+                enemyList = [];
 
-  } else {
-    // 게임 오버 이미지 그리기
-    ctx.drawImage(gameOverImage, 10, 100, 380, 380);
-  }
-  if (gameOver) {
-    ctx.drawImage(reloadImage, canvas.width / 2 - 50, canvas.height/1.5, 100, 100); // 이미지 크기와 위치는 실제 상황에 맞게 조정하세요.
-  }
-}
+                bg1Y = 0;
+                bg2Y = -canvas.height;
 
-// 이미지 로딩, 키보드 리스너 설정, 적 생성, 메인 함수 호출
-loadImage();
-setupKeyboardListener();
-createEnemy();
-main();
+                // let interval = setInterval(() => {
+                //   let e = new Enemy();
+                //   e.init();
+                // }, 500 - (difficulty * 200)); // 1초에 한 번씩 적 생성
+                if (interval) {
+                    clearInterval(interval);
+                }
+
+                createEnemy();
+                main();
+
+            }
+        });
+    }
+
+    // 게임 상태 업데이트 함수
+    // 게임의 상태(플레이어, 적, 총알의 위치 등)를 업데이트합니다.
+    function update() {
+        if (39 in keysDown) {
+            if (spaceshipX >= 340) return;
+            spaceshipX += 3.5; // 우측 화살표를 누르면 우측으로 이동
+        }
+        if (37 in keysDown) {
+            if (spaceshipX <= 0) return;
+            spaceshipX -= 3.5; // 좌측 화살표를 누르면 좌측으로 이동
+        }
+        if (38 in keysDown) {
+            if (spaceshipY <= 0) return;
+            spaceshipY -= 3.5; //up
+        }
+        if (40 in keysDown) {
+            if (spaceshipY >= canvas.height - 60) return;
+            spaceshipY += 3.5; //down
+        }
+
+        bg1Y += 2; // 배경 이미지 속도 조절
+        bg2Y += 2;
+
+        if (bg1Y >= canvas.height) bg1Y = -canvas.height;
+        if (bg2Y >= canvas.height) bg2Y = -canvas.height;
+
+        // 총알의 위치 업데이트
+        for (let i = 0; i < bulletList.length; i++) {
+            if (bulletList[i].alive) { // 총알이 살아 있으면
+                bulletList[i].update();
+                bulletList[i].checkHit(); // 적에 맞았는지 확인
+            }
+        }
+
+        // 적의 위치 업데이트
+        for (let i = 0; i < enemyList.length; i++) {
+            enemyList[i].update();
+        }
+
+        //점수별 난이도 상승
+        if (score >= 30 && score % 30 === 0) {
+            difficulty++;
+        }
+    }
+
+    // 총알 생성 함수
+    // 새로운 총알을 생성하고 총알 배열에 추가합니다.
+    function createBullet() {
+        let b = new Bullet();
+        b.init();
+    }
+
+
+    // 게임 화면 렌더링 함수
+    // 게임의 상태를 캔버스에 그려주는 함수입니다.
+    function render() {
+        ctx.drawImage(backgroundImage1, 0, 0, canvas.width, canvas.height) // 배경 이미지 그리기
+
+        ctx.drawImage(backgroundImage1, 0, bg1Y, canvas.width, canvas.height);
+        ctx.drawImage(backgroundImage2, 0, bg2Y, canvas.width, canvas.height);
+
+        ctx.drawImage(spaceshipImage, spaceshipX, spaceshipY); // 우주선 이미지 그리기
+        ctx.fillText(`Score:${score}`, 20, 20); // 점수 표시
+        ctx.fillStyle = "white";
+        ctx.font = "20px Arial";
+
+
+        // 살아 있는 총알들 그리기
+        for (let i = 0; i < bulletList.length; i++) {
+            if (bulletList[i].alive) {
+                ctx.drawImage(bulletImage, bulletList[i].x, bulletList[i].y);
+            }
+        }
+
+        // 적 그리기
+        for (let i = 0; i < enemyList.length; i++) {
+            // ctx.drawImage(enemyImage, enemyList[i].x, enemyList[i].y);
+            // 각 적의 고유한 이미지를 사용하여 그림
+            ctx.drawImage(enemyList[i].image, enemyList[i].x, enemyList[i].y);
+        }
+    }
+
+    // 메인 게임 루프
+    function main() {
+        if (!gameOver) { // 게임 오버가 아니면 업데이트와 렌더
+
+            update(); // 게임 상태 업데이트
+            render(); // 화면 렌더링
+            requestAnimationFrame(main); // 다음 프레임을 요청
+
+        } else {
+            // 게임 오버 이미지 그리기
+            ctx.drawImage(gameOverImage, 10, 100, 380, 380);
+             updateScoreboard(score);
+        }
+        if (gameOver) {
+
+            ctx.drawImage(reloadImage, canvas.width / 2 - 50, canvas.height / 1.5, 100, 100); // 이미지 크기와 위치는 실제 상황에 맞게 조정하세요.
+        }
+
+    }
+
+    // 이미지 로딩, 키보드 리스너 설정, 적 생성, 메인 함수 호출
+
+    loadImage();
+    setupKeyboardListener();
+    createEnemy();
+    main();
+
 
 </script>
 
