@@ -1,0 +1,61 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Websys - Fondue</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}?after">
+</head>
+<body>
+    <div class="container">
+        <!--Header-->
+        <header>
+            <nav>
+                <div class="logo">
+                    <ul class="home_menu">
+                        <li>
+                            <a href="/" class="home">
+                                <img src="{% static '/img/websys.png' %}?after" />
+                                Fondue
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <ul class="menus_sub-menu">
+                        <li class="date"></li>
+                        <li class="time"></li>
+                    </ul>
+                    <ul class="menus_menu">
+                        <li><a class="introduce">Introduce</a></li>
+                        <li><a href='{% url "game_app:index" %}' class="game">Game</a></li>
+                        <li><a href="#" class="photo">Photo</a></li>
+                        <li><a href="login" class="logIn" id="logIn">log-in</a></li>
+<!--                        <li><a href="createAccount" class="CreateAccount">Create account</a></li>-->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <script src="{% static '/js/base.js' %}?after"></script>
+
+        {% block contents %}
+
+        <!-- 이 사이에 각 html별로 겹치지 않는 내용 들어감 -->
+
+        {% endblock %}
+
+        <!-- footer -->
+        <footer id="footer">
+            <div class="copyright">
+                <div class="foot1">
+                    <p style="font-size: 18px;">Websys</p>
+                    <p>충북대학교: 충청북도 청주시 서원구 충대로1 </p>
+                    <p class="copy"> copyright &copy WEBSYS: Myoungsuk, Junho, Eunsung, Sieun.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>

@@ -61,7 +61,7 @@ ROOT_URLCONF = 'OpenSourceWebTeam.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['Web-TeamProject/main_app/templates/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
