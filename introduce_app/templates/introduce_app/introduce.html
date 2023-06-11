@@ -10,9 +10,15 @@
     <link type="text/css" rel="stylesheet" href="{% static 'css/introduce.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-map.css' %}"/>
     <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-profile.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-profile-1.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-profile-2.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-profile-3.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-profile-4.css' %}"/>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a9a406b65b022db2fa69a6aadd1b82b"></script>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a9a406b65b022db2fa69a6aadd1b82b"></script>
     <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
 </head>
 <body>
@@ -39,9 +45,9 @@
 
 <!--============== 1: Banner ==============-->
 <section class="banner-section">
-{#    <video class="banner-video" autoplay muted loop>#}
-{#        <source src="{% static 'media/banner-video.mp4' %}">#}
-{#    </video>#}
+    {#    <video class="banner-video" autoplay muted loop>#}
+    {#        <source src="{% static 'media/banner-video.mp4' %}">#}
+    {#    </video>#}
     <div class="banner-text">
         <p></p>
     </div>
@@ -51,7 +57,7 @@
 
 <!--============== 2: Profiles ==============-->
 <section class="profile-section">
-<!---------------- 2-1: Profile-1 ---------------->
+    <!---------------- 2-1: Profile-1 ---------------->
     <div class="profile-container">
         <div class="profile-1">
             <table class="profile-1-layout">
@@ -59,7 +65,12 @@
                     <div>
                         <div class="profile-text">
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                                mollit anim id est laborum.
                             </p>
                         </div>
                         <div class="profile-contact">
@@ -75,6 +86,7 @@
                         </div>
                     </div>
                 </td>
+
                 <td style="width: 20%">
                     <div class="profile-picture">
                         <div class="profile-picture-box">
@@ -83,52 +95,63 @@
                         <span class="profile-name">정준호</span>
                     </div>
                 </td>
+
                 <td style="width: 40%">
                     <div class="profile-info">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </p>
                     </div>
+                    <table class="profile-1-logos">
+                        <td class="profile-logo-item">
+                            <div class="profile-logo-box" id="logo-box-github">
+{#                                <img src="{% static 'images/github-mark.png' %}">#}
+                            </div>
+                        </td>
+                        <td class="profile-logo-item">
+                            <div class="profile-logo-box" id="logo-box-insta">
+{#                                <img src="{% static 'images/Instagram.png' %}">#}
+                            </div>
+                        </td>
+                        <td class=" profile-logo-item">
+                            <div class="profile-logo-box" id="logo-box-linkedIn">
+{#                                <img src="{% static 'images/In-Blue.png' %}">#}
+                            </div>
+                        </td>
+                    </table>
                 </td>
             </table>
-            <div class="profile-logos">
-                <div class="logo-box-github">
-
-                </div>
-                <div class="logo-box-insta">
-
-                </div>
-                <div class="logo-box-linkedIn">
-
-                </div>
-            </div>
         </div>
     </div>
-<!---------------- 2-1: Profile-1// ---------------->
+    <!---------------- 2-1: Profile-1// ---------------->
 
-<!---------------- 2-2: Profile-2 ---------------->
+    <!---------------- 2-2: Profile-2 ---------------->
     <div class="profile-container">
         <div class="profile-2">
 
         </div>
     </div>
-<!---------------- 2-2: Profile-2// ---------------->
+    <!---------------- 2-2: Profile-2// ---------------->
 
-<!---------------- 2-3: Profile-3 ---------------->
+    <!---------------- 2-3: Profile-3 ---------------->
     <div class="profile-container">
         <div class="profile-3">
 
         </div>
     </div>
-<!---------------- 2-3: Profile-3// ---------------->
+    <!---------------- 2-3: Profile-3// ---------------->
 
-<!---------------- 2-4: Profile-4 ---------------->
+    <!---------------- 2-4: Profile-4 ---------------->
     <div class="profile-container">
         <div class="profile-4">
 
         </div>
     </div>
-<!---------------- 2-4: Profile-4// ---------------->
+    <!---------------- 2-4: Profile-4// ---------------->
 </section>
 <!--============== 2: Profiles// ==============-->
 
@@ -149,7 +172,11 @@
         <td style="width: 25%">
             <div class="map-description">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.
                 </p>
             </div>
         </td>
