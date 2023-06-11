@@ -2,19 +2,27 @@ body {
     margin: 0;
 }
 
-.banner {
+.banner-section {
     background: red;
     width: 100vw;
     height: 70vh;
+    overflow: hidden;
+    position: relative;
 }
 
-.banner-text-1 {
+.banner-video {
+    width: 100%;
+}
+
+.banner-text {
+    width: 100%;
     position: absolute;
     top: 50%;
-    right: 50%;
+    left: 50%;
 }
 
-.banner-text-1 > p {
-    color: white;
-    margin: 0;
+.map-section {
+    background-color: skyblue;
+    width: 100vw;
+    height: 100vh;
 }
