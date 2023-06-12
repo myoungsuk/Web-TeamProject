@@ -1,10 +1,10 @@
 .profile-1 {
-    background: whitesmoke;
+    background-image: url("/static/images/profile-1-bg.jpg");
+    background-size: cover;
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
-
 
 .profile-1-layout {
     width: 100%;
@@ -12,49 +12,38 @@
 }
 
 .profile-1-layout td {
-    background-color: darkgrey;
-}
-
-.profile-1-layout .td-left {
-    text-align: right;
-}
-
-.profile-1-layout .td-center {
     text-align: center;
 }
 
-.profile-1-layout .td-right {
-    text-align: left;
-}
-
-
 .profile-1 .profile-text {
-    background-color: red;
-    border: 1px solid black;
+    background-color: rgba(255, 105, 180, 0.4);
     text-align: left;
+    line-height: 1.4em;
+    width: 80%;
     height: 140px;
     overflow: auto;
     padding-left: 1em;
     padding-right: 1em;
+    border-radius: 20px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.4);
 }
 
-.profile-1-text {
-    margin-bottom: 70px;
-    width: 80%;
+#profile-1-text {
+    margin-left: 15%;
+    margin-bottom: 80px;
 }
 
-.profile-1-contact {
-    background-color: red;
-    border: 1px solid black;
-    width: 50%;
+#profile-1-contact {
+    margin-left: 25%;
+    width: 60%;
+    height: fit-content;
 }
 
-.profile-1-info {
-    background-color: red;
-    border: 1px solid black;
-    width: 80%;
+#profile-1-info {
     height: 140px;
     overflow: scroll;
+    margin-bottom: 80px;
+    margin-left: 5%;
 }
 
 .profile-1 .profile-picture {
@@ -63,15 +52,16 @@
 
 .profile-1 .profile-name {
     margin-top: 10px;
+    color: lightyellow;
 }
 
 .profile-1-logos {
-    /* 아래 item의 크기에 맞게 설정 되어야 한다 */
-    background-color: red;
-    border: 1px solid black;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
     width: 60%;
     height: fit-content;
+}
+
+.profile-1-logos .profile-logo-box {
+    margin-right: 40px;
 }
 
