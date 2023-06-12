@@ -10,16 +10,48 @@
 }
 
 .profile-3-layout td {
-    background-color: wheat;
     text-align: center;
 }
 
-.profile-3-contact {
+.profile-3 .profile-name {
+    color: #1f1f1f;
+    font-weight: bold;
+    text-shadow: 0px 0.3px 0.5px rgba(31, 31, 31, 0.5);
+}
+
+.profile-3 .profile-picture-box {
+    border: 1px solid black;
+    box-shadow: none;
+}
+
+.profile-3 .profile-picture-box:hover {
+    border: none;
+}
+
+.profile-3 .profile-text {
     background-color: honeydew;
     border: 1px solid black;
 }
 
-.profile-3-text1 {
-    background-color: honeydew;
-    border: 1px solid black;
+#profile-3-contact {
+    margin-top: 10px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#profile-3-text {
+    width: 90%;
+    margin-bottom: 10px;
+}
+
+#profile-3-info {
+    width: 90%;
+    margin-bottom: 20px;
+}
+
+.profile-3-logos {
+    position: relative;
+    top: 10%;
+    left: 50%;
 }
