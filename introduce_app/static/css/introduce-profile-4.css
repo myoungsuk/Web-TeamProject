@@ -1,5 +1,30 @@
 .profile-4 {
-    background-color: orange;
+    background-color: yellowgreen;
     width: 100%;
     height: 100%;
+}
+
+.profile-4-layout {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-4-layout td {
+    background-color: limegreen;
+    text-align: center;
+}
+
+.profile-4-contact {
+    background-color: springgreen;
+    border: 1px solid black;
+}
+
+.profile-4-text1 {
+    background-color: springgreen;
+    border: 1px solid black;
+}
+
+.profile-4-text2 {
+    background-color: springgreen;
+    border: 1px solid black;
 }

@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
 }
@@ -19,6 +23,12 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+}
+
+.profile-container {
+    background: blue;
+    width: 100vw;
+    height: 100vh;
 }
 
 .map-section {

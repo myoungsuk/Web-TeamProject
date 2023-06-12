@@ -1,5 +1,30 @@
 .profile-2 {
-    background-color: green;
+    background-color: whitesmoke;
     width: 100%;
     height: 100%;
+}
+
+.profile-2-layout {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-2-layout td {
+    background-color: lightgrey;
+    text-align: center;
+}
+
+.profile-2-text1 {
+    background-color: lightskyblue;
+    border: 1px solid black;
+}
+
+.profile-2-text2 {
+    background-color: lightskyblue;
+    border: 1px solid black;
+}
+
+.profile-2-contact {
+    background-color: lightskyblue;
+    border: 1px solid black;
 }
