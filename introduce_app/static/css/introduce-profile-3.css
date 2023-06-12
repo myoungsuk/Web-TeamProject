@@ -31,23 +31,34 @@
 .profile-3 .profile-text {
     background-color: honeydew;
     border: 1px solid black;
+    width: 90%;
+    height: 120px;
+    line-height: 1.2em;
+    overflow: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.profile-text p {
+    height: 75%;
+    overflow: auto;
 }
 
 #profile-3-contact {
     margin-top: 10px;
     width: 80%;
+    height: fit-content;
     margin-left: 10%;
     margin-right: 10%;
 }
 
 #profile-3-text {
-    width: 90%;
     margin-bottom: 10px;
+    height: 140px;
 }
 
 #profile-3-info {
-    width: 90%;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .profile-3-logos {
