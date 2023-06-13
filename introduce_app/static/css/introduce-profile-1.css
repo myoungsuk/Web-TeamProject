@@ -46,6 +46,10 @@
     margin-left: 5%;
 }
 
+#profile-1-info > ul > li {
+    text-align: right;
+}
+
 .profile-1 .profile-picture {
     text-align: center;
 }

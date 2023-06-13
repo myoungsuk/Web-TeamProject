@@ -21,7 +21,7 @@
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a9a406b65b022db2fa69a6aadd1b82b"></script>
     <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
     {#    <script type="text/javascript" src="{% static 'js/scroll.js' %}"></script>#}
-{#    <script type="text/javascript" src="{% static 'js/character_highlight.js' %}"></script>#}
+    <script type="text/javascript" src="{% static 'js/character_highlight.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </head>
 <body>
@@ -54,7 +54,6 @@
     <div class="banner-bgcover"></div>
     <div class="banner-text">
         <p style="color: white;">
-            매력있고 열정적인<br>
             WEBSYS팀을 소개합니다
         </p>
     </div>
@@ -100,13 +99,15 @@
 
                 <td class="td-right" style="width: 40%">
                     <div id="profile-1-info" class="profile-text">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
+                        <ul style="direction: rtl;">
+                            <li>++C/C</li>
+                            <li>Raspberry Pi</li>
+                            <li>Debian/CentOS</li>
+                            <li>Arduino</li>
+                            <li>Apache</li>
+                            <li>MySQL</li>
+                            <li>PHP</li>
+                        </ul>
                     </div>
                     <table class="profile-1-logos">
                         <td class="profile-logo-item">
@@ -149,14 +150,14 @@
                         </p>
                     </div>
                     <div id="profile-2-info" class="profile-text">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum.
-                        </p>
+                        <ul>
+                            <li>Java</li>
+                            <li>Spring Framework</li>
+                            <li>Spring boot</li>
+                            <li>Spring MVC</li>
+                            <li>Spring Security</li>
+                            <li>Thymeleaf</li>
+                        </ul>
                     </div>
                 </td>
                 <td style="width: 30%">
@@ -216,49 +217,45 @@
                     <span class="profile-name">홍시은</span>
                     <div id="profile-3-contact" class="profile-text">
                         <p>
-                            Tel: 82+10-3382-4449<br>
-                            Email: YYYY@ZZZZZ.com
+                            Tel: 82+10-XXXX-XXXX<br>
+                            Email: tjwns53@naver.com
                         </p>
                     </div>
                 </td>
                 <td style="width: 50%">
                     <div id="profile-3-text" class="profile-text">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum.
+                            안녕하세요! 중어중문학과에서 소프트웨어학과 복수전공 중인 홍시은입니다.<br>
+                            아직 진로를 결정하지 못해 이것저것 접해보는 중입니다:)
                         </p>
                     </div>
                     <div id="profile-3-info" class="profile-text">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum.
-                        </p>
+                        <ul>
+                            <li>HTML, CSS, JS</li>
+                            <li>React</li>
+                            <li>React Native</li>
+                            <li>jQuery</li>
+                            <li>Django Framework</li>
+                            <li>MongoDB</li>
+                        </ul>
                     </div>
                     <table class="profile-3-logos">
                         <td class="profile-logo-item">
-                            <a href="" target="_blank">
+                            <a href="https://github.com/XIOZ119" target="_blank">
                                 <div class="profile-logo-box">
                                     <img src="{% static 'images/github-mark.png' %}">
                                 </div>
                             </a>
                         </td>
                         <td class="profile-logo-item">
-                            <a href="" target="_blank">
+                            <a href="https://www.instagram.com/c_eun19/" target="_blank">
                                 <div class="profile-logo-box">
                                     <img src="{% static 'images/Instagram.png' %}">
                                 </div>
                             </a>
                         </td>
                         <td class=" profile-logo-item">
-                            <a href="" target="_blank">
+                            <a href="" target="_blank" class="disabled">
                                 <div class="profile-logo-box">
                                     <img src="{% static 'images/In-Blue.png' %}">
                                 </div>
@@ -279,18 +276,13 @@
                     <td style="width: 50%">
                         <div id="profile-4-text" class="profile-text">
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
+                                소프트웨어학과 3학년 홍은성입니다. 주로 유니티 게임 개발과 알고리즘을 공부하고 있습니다.
                             </p>
                         </div>
                         <div id="profile-4-contact" class="profile-text">
                             <p>
                                 Tel: 82+XX-XXXX-XXXX<br>
-                                Email: YYYY@ZZZZZ.com
+                                Email: hiddenjade2021@gmail.com
                             </p>
                         </div>
                     </td>
@@ -302,14 +294,14 @@
                         </div>
                         <span class="profile-name">홍은성</span>
                         <div id="profile-4-info" class="profile-text">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum.
-                            </p>
+                            <ul>
+                                <li>C/C++</li>
+                                <li>C#</li>
+                                <li>Unity Engine</li>
+                                <li>Visual Studio</li>
+                                <li>Asset Pipeline</li>
+                                <li>Physics Engine</li>
+                            </ul>
                         </div>
                     </td>
                 </tr>
@@ -317,7 +309,7 @@
                     <td id="logo-td" colspan="1">
                         <table class="profile-4-logos">
                             <td class="profile-logo-item">
-                                <a href="" target="_blank">
+                                <a href="https://github.com/HHJade2" target="_blank">
                                     <div class="profile-logo-box">
                                         <img src="{% static 'images/github-mark.png' %}">
                                     </div>

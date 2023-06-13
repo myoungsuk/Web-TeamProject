@@ -40,6 +40,15 @@
     top: 10%;
     left: -10%;
     height: 160px;
+    overflow: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#profile-4-info > ul > li {
+    background-color: lightgreen;
+    margin-bottom: 1.1em;
+    padding-right: 1px;
 }
 
 #logo-td {

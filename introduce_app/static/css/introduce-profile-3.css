@@ -61,8 +61,23 @@
     margin-bottom: 40px;
 }
 
+#profile-3-info > ul > li {
+    background-color: whitesmoke;
+    margin-bottom: 1.1em;
+    padding-right: 1px;
+}
+
 .profile-3-logos {
     position: relative;
     top: 10%;
     left: 50%;
+}
+
+a[class="disabled"] {
+    pointer-events: none;
+    cursor: default;
+}
+
+a[class="disabled"] .profile-logo-box {
+    opacity: 50%;
 }
