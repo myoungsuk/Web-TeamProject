@@ -22,7 +22,7 @@ urlpatterns = [
 
 
     path('', include('main_app.urls')),
-    # path('eunsung_app/', include('eunsung_app.urls')),
+    path('album_app/', include('album_app.urls')),
     path('game_app/', include('game_app.urls')),
     path('introduce_app/', include('introduce_app.urls')),
     path('main_app/', include('main_app.urls')),

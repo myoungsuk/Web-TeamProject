@@ -27,9 +27,9 @@
                         <li class="time"></li>
                     </ul>
                     <ul class="menus_menu">
-                        <li><a class="introduce">Introduce</a></li>
+                        <li><a href = '{% url "introduce_app:introduce" %}' class="introduce">Introduce</a></li>
                         <li><a href='{% url "game_app:index" %}' class="game">Game</a></li>
-                        <li><a href="#" class="photo">Photo</a></li>
+                        <li><a href='{% url "album_app:album" %}' class="photo">Photo</a></li>
                         <li><a href="login" class="logIn" id="logIn">log-in</a></li>
 <!--                        <li><a href="createAccount" class="CreateAccount">Create account</a></li>-->
                     </ul>
