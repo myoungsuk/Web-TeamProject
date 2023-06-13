@@ -1,0 +1,69 @@
+.map-section {
+    background-color: skyblue;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.map-video {
+    width: 100%;
+}
+
+.map-bgcover {
+    background-color: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+
+.map-layout {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+
+.map-layout td {
+    text-align: center;
+}
+
+.map-title {
+    position: relative;
+    top: -30%;
+    left: 10%;
+    font-size: 30px;
+    color: white;
+    letter-spacing: 0.7em;
+    line-height: 1.3em;
+    font-weight: bold;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.mapp {
+    display: flex;
+    justify-content: center;
+}
+
+.map-box {
+    width: 700px;
+    height: 700px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.map-description {
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid black;
+    width: 80%;
+    margin-left: 10%;
+}

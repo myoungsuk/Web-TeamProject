@@ -1,0 +1,385 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Introduction</title>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/header.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/footer.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-map.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-profile.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-profile-1.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-profile-2.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-profile-3.css' %}"/>
+    <link type="text/css" rel="stylesheet" href="{% static 'css/introduce-profile-4.css' %}"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a9a406b65b022db2fa69a6aadd1b82b"></script>
+    <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+    {#    <script type="text/javascript" src="{% static 'js/scroll.js' %}"></script>#}
+    <script type="text/javascript" src="{% static 'js/character_highlight.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+
+<!--============== Navigation Bar ==============-->
+{#<header>#}
+{#    <nav>#}
+{#        <div>#}
+{#            <ul class="home_menu">#}
+{#                <li><a href="/main_app" class="home">name</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+{#        <div>#}
+{#            <ul class="menus_menu">#}
+{#                <li><a href="#" class="introduce">Introduce</a></li>#}
+{#                <li><a href="#" class="game">Game</a></li>#}
+{#                <li><a href="#" class="eunsung">--</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+{#    </nav>#}
+{#</header>#}
+<!--============== Navigation Bar// ==============-->
+
+
+<!--============== 1: Banner ==============-->
+<section class="banner-section scroll-section">
+    <video class="banner-video" autoplay muted loop>
+        <source src="{% static 'videos/banner-video.mp4' %}">
+    </video>
+    <div class="banner-bgcover"></div>
+    <div class="banner-text">
+        <p style="color: white;">
+            WEBSYS팀을 소개합니다
+        </p>
+    </div>
+</section>
+<!--============== 1: Banner// ==============-->
+
+
+<!--============== 2: Profiles ==============-->
+<section class="profile-section">
+    <!---------------- 2-1: Profile-1 ---------------->
+    <div class="profile-container scroll-section">
+        <div class="profile-1">
+            <table class="profile-1-layout">
+                <td class="td-left" style="width: 40%">
+                    <div id="profile-1-text" class="profile-text">
+                        <p>
+                            충북대학교 소프트웨어학부 정준호입니다!<br>
+                            소프트웨어공학과 IoT을 관심있게 공부 하고 있습니다.<br>
+                            저희 사이트에 방문해주셔서 감사합니다!
+                        </p>
+                    </div>
+                    <div id="profile-1-contact" class="profile-text">
+                        <p>
+                            Tel: 82+10-7110-3560<br>
+                            Email: stkjas4657@naver.com
+                        </p>
+                        <p>
+                            Every 09:00 KST,<br>
+                            or whenever I can check,<br>
+                            I will reply to you, thank you.
+                        </p>
+                    </div>
+                </td>
+
+                <td class="td-center" style="width: 20%">
+                    <div class="profile-picture">
+                        <div class="profile-picture-box">
+                            <img class="profile-image" src="{% static 'images/junho.jpeg' %}">
+                        </div>
+                    </div>
+                    <span class="profile-name">정준호</span>
+                </td>
+
+                <td class="td-right" style="width: 40%">
+                    <div id="profile-1-info" class="profile-text">
+                        <ul style="direction: rtl;">
+                            <li>++C/C</li>
+                            <li>Raspberry Pi</li>
+                            <li>Debian/CentOS</li>
+                            <li>Arduino</li>
+                            <li>Apache</li>
+                            <li>MySQL</li>
+                            <li>PHP</li>
+                        </ul>
+                    </div>
+                    <table class="profile-1-logos">
+                        <td class="profile-logo-item">
+                            <a href="https://github.com/LikeDeer" target="_blank">
+                                <div class="profile-logo-box">
+                                    <img src="{% static 'images/github-mark-white.png' %}">
+                                </div>
+                            </a>
+                        </td>
+                        <td class="profile-logo-item">
+                            <a href="https://www.instagram.com/jeongjunhodeer" target="_blank">
+                                <div class="profile-logo-box">
+                                    <img src="{% static 'images/Instagram.png' %}">
+                                </div>
+                            </a>
+                        </td>
+                        <td class=" profile-logo-item">
+                            <a href="" target="_blank">
+                                <div class="profile-logo-box">
+                                    <img src="{% static 'images/In-Blue.png' %}">
+                                </div>
+                            </a>
+                        </td>
+                    </table>
+                </td>
+            </table>
+        </div>
+    </div>
+    <!---------------- 2-1: Profile-1// ---------------->
+
+    <!---------------- 2-2: Profile-2 ---------------->
+    <div class="profile-container scroll-section">
+        <div class="profile-2">
+            <table class="profile-2-layout">
+                <td style="width: 40%">
+                    <div id="profile-2-text" class="profile-text">
+                        <p>
+                            안녕하세요 소프트웨어학과 4학년 강명석입니다.<br>
+                            저는 안드로이드 앱 개발과 스프링부트를 이용한 백앤드 개발에 관심있습니다. 혹시 물어볼게 있다면 연락주세요.
+                        </p>
+                    </div>
+                    <div id="profile-2-info" class="profile-text">
+                        <ul>
+                            <li>Java</li>
+                            <li>Spring Framework</li>
+                            <li>Spring boot</li>
+                            <li>Spring MVC</li>
+                            <li>Spring Security</li>
+                            <li>Thymeleaf</li>
+                        </ul>
+                    </div>
+                </td>
+                <td style="width: 30%">
+                    <div class="profile-picture">
+                        <div class="profile-picture-box">
+                            <img class="profile-image" src="{% static 'images/myoungsuk.jpeg' %}">
+                        </div>
+                    </div>
+                    <span class="profile-name">강명석</span>
+                </td>
+                <td style="width: 30%">
+                    <div id="profile-2-contact" class="profile-text">
+                        <p>
+                            Tel: 82+10-8321-8675<br>
+                            Email: k4858678@gmail.com
+                        </p>
+                    </div>
+                    <table class="profile-2-logos">
+                        <tr>
+                            <a href="https://github.com/myoungsuk" target="_blank">
+                                <div class="profile-logo-box">
+                                    <img src="{% static 'images/github-mark.png' %}">
+                                </div>
+                            </a>
+                        </tr>
+                        <tr>
+                            <a href="https://www.instagram.com/myoung_suk.212/" target="_blank">
+                                <div class="profile-logo-box">
+                                    <img src="{% static 'images/Instagram.png' %}">
+                                </div>
+                            </a>
+                        </tr>
+                        <tr>
+                            <a href="https://www.linkedin.com/in/myoungsuk/" target="_blank">
+                                <div class="profile-logo-box">
+                                    <img src="{% static 'images/In-White.png' %}">
+                                </div>
+                            </a>
+                        </tr>
+                    </table>
+                </td>
+            </table>
+        </div>
+    </div>
+    <!---------------- 2-2: Profile-2// ---------------->
+
+    <!---------------- 2-3: Profile-3 ---------------->
+    <div class="profile-container scroll-section">
+        <div class="profile-3">
+            <table class="profile-3-layout">
+                <td style="width: 50%">
+                    <div class="profile-picture">
+                        <div class="profile-picture-box">
+                            <img class="profile-image" src="{% static 'images/sieun.png' %}">
+                        </div>
+                    </div>
+                    <span class="profile-name">홍시은</span>
+                    <div id="profile-3-contact" class="profile-text">
+                        <p>
+                            Tel: 82+10-XXXX-XXXX<br>
+                            Email: tjwns53@naver.com
+                        </p>
+                    </div>
+                </td>
+                <td style="width: 50%">
+                    <div id="profile-3-text" class="profile-text">
+                        <p>
+                            안녕하세요! 중어중문학과에서 소프트웨어학과 복수전공 중인 홍시은입니다.<br>
+                            아직 진로를 결정하지 못해 이것저것 접해보는 중입니다:)
+                        </p>
+                    </div>
+                    <div id="profile-3-info" class="profile-text">
+                        <ul>
+                            <li>HTML, CSS, JS</li>
+                            <li>React</li>
+                            <li>React Native</li>
+                            <li>jQuery</li>
+                            <li>Django Framework</li>
+                            <li>MongoDB</li>
+                        </ul>
+                    </div>
+                    <table class="profile-3-logos">
+                        <td class="profile-logo-item">
+                            <a href="https://github.com/XIOZ119" target="_blank">
+                                <div class="profile-logo-box">
+                                    <img src="{% static 'images/github-mark.png' %}">
+                                </div>
+                            </a>
+                        </td>
+                        <td class="profile-logo-item">
+                            <a href="https://www.instagram.com/c_eun19/" target="_blank">
+                                <div class="profile-logo-box">
+                                    <img src="{% static 'images/Instagram.png' %}">
+                                </div>
+                            </a>
+                        </td>
+                        <td class=" profile-logo-item">
+                            <a href="" target="_blank" class="disabled">
+                                <div class="profile-logo-box">
+                                    <img src="{% static 'images/In-Blue.png' %}">
+                                </div>
+                            </a>
+                        </td>
+                    </table>
+                </td>
+            </table>
+        </div>
+    </div>
+    <!---------------- 2-3: Profile-3// ---------------->
+
+    <!---------------- 2-4: Profile-4 ---------------->
+    <div class="profile-container scroll-section">
+        <div class="profile-4">
+            <table class="profile-4-layout">
+                <tr style="height: 80%">
+                    <td style="width: 50%">
+                        <div id="profile-4-text" class="profile-text">
+                            <p>
+                                소프트웨어학과 3학년 홍은성입니다. 주로 유니티 게임 개발과 알고리즘을 공부하고 있습니다.
+                            </p>
+                        </div>
+                        <div id="profile-4-contact" class="profile-text">
+                            <p>
+                                Tel: 82+XX-XXXX-XXXX<br>
+                                Email: hiddenjade2021@gmail.com
+                            </p>
+                        </div>
+                    </td>
+                    <td style="width: 50%">
+                        <div class="profile-picture">
+                            <div class="profile-picture-box">
+                                <img class="profile-image" src="{% static 'images/eunsung.png' %}">
+                            </div>
+                        </div>
+                        <span class="profile-name">홍은성</span>
+                        <div id="profile-4-info" class="profile-text">
+                            <ul>
+                                <li>C/C++</li>
+                                <li>C#</li>
+                                <li>Unity Engine</li>
+                                <li>Visual Studio</li>
+                                <li>Asset Pipeline</li>
+                                <li>Physics Engine</li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height: 20%">
+                    <td id="logo-td" colspan="1">
+                        <table class="profile-4-logos">
+                            <td class="profile-logo-item">
+                                <a href="https://github.com/HHJade2" target="_blank">
+                                    <div class="profile-logo-box">
+                                        <img src="{% static 'images/github-mark.png' %}">
+                                    </div>
+                                </a>
+                            </td>
+                            <td class="profile-logo-item">
+                                <a href="" target="_blank">
+                                    <div class="profile-logo-box">
+                                        <img src="{% static 'images/Instagram.png' %}">
+                                    </div>
+                                </a>
+                            </td>
+                            <td class=" profile-logo-item">
+                                <a href="" target="_blank">
+                                    <div class="profile-logo-box">
+                                        <img src="{% static 'images/In-Blue.png' %}">
+                                    </div>
+                                </a>
+                            </td>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!---------------- 2-4: Profile-4// ---------------->
+</section>
+<!--============== 2: Profiles// ==============-->
+
+
+<!--============== 3: Map ==============-->
+<section class="map-section scroll-section">
+    <video class="map-video" autoplay muted loop>
+        <source src="{% static 'videos/map-bg-video.mp4' %}">
+    </video>
+    <div class="map-bgcover"></div>
+    <table class="map-layout">
+        <td style="width: 25%">
+            <div class="map-title">
+                <p>충북대학교<br>소프트웨어학부<br>학술동아리<br>EMSYS</p>
+            </div>
+        </td>
+        <td style="width: 50%">
+            <div class="mapp"></div>
+            <div class="map-box">
+                <div id="map"></div>
+            </div>
+            </div>
+        </td>
+        <td style="width: 25%">
+            <div class="map-description">
+                <p>
+                    충북대학교 전자정보대학 3관<br>
+                    S4-1 (소프트웨어학부)<br>
+                    110호 - 임베디드 응용 실험실<br>
+                    위도: 36.6, 경도: 127.4
+                </p>
+            </div>
+            <div class="map-currentLocation">
+                <p></p>
+            </div>
+        </td>
+    </table>
+</section>
+<!--============== 3: Map// ==============-->
+
+
+<!--============== Footer ==============-->
+
+<!--============== Footer// ==============-->
+
+</body>
+</html>
