@@ -1,0 +1,37 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block contents %}
+<link rel="stylesheet" href="{% static 'css/createAccount.css' %}?after" xmlns="http://www.w3.org/1999/html">
+        <main>
+            <div class="container">
+                <div class="form">
+                    <div class="form_div">
+                        <h1>회원가입</h1>
+                        <span>Websys의 회원이 되어 다양한 활동을 구경하세요!</span>
+                        <hr>
+                        <form action="/login" class="createAccount-form">
+                            <span>아이디</span>
+                            <input class="same" placeholder="아이디를 입력해주세요." required><br>
+                            <span>비밀번호</span>
+                            <input class="same" placeholder="비밀번호를 입력해주세요." required><br>
+                            <span>이름</span>
+                            <input class="same" placeholder="이름을 입력해주세요." required><br>
+                            <span>성별</span>
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">남성</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">여성</label><br>
+                            <br>
+                            <span>이메일 주소</span>
+                            <input class="same" type="email" placeholder="이메일을 입력해주세요." required><br>
+                            <span>생년월일</span>
+                            <input class="same" type="date" placeholder="비밀번호를 입력해주세요." required><br>
+                            <input id="reset" type="reset" value="초기화">
+                            <input class="create_account" type="submit" value="가입하기">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+{% endblock %}
