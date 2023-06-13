@@ -1,0 +1,27 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block contents %}
+        <link rel="stylesheet" href="{% static 'css/login.css' %}?after">
+        <main>
+            <div class="container">
+                <div class="form">
+                    <div class="form_div">
+                        <h1>로그인</h1>
+                        <span>Welcome! Websys에 오신 것을 환영합니다.</span>
+                        <hr>
+                        <form action="/" class="login-form">
+                            <input class="login_id" placeholder="아이디를 입력해주세요."><br>
+                            <input class="login_pw" placeholder="비밀번호를 입력해주세요."><br>
+                            <input class="login_submit" type="submit" value="로그인">
+                            <span> * 타 사이트와 비밀번호를 동일하게 사용할 경우 도용의 위험이 있으므로, 정기적인 비밀번호 변경을 해주시기 바랍니다.</span>
+                        </form>
+                        <div class="createAccount_link">
+                            <ul>
+                                <li><a href="createAccount">회원가입</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+{% endblock %}

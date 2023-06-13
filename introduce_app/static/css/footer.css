@@ -1,0 +1,15 @@
+/* footer */
+#footer {
+    padding: 32px 0 35px 0;
+    background: #2c2a29;
+    position: relative;
+    width: 100%;
+}
+.copyright {
+    color: #999;
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+    position: relative;
+    left: 50%;
+}
