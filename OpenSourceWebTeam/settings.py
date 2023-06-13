@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
   
-    'eunsung_app',
+    'album_app',
     'game_app',
     'introduce_app',
     'main_app',
